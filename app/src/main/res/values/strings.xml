@@ -1,0 +1,94 @@
+<resources xmlns:font-size="http://schemas.android.com/tools">
+    <!--<string name="ApplicationName">Swimtimer &#174;</string>-->
+    <string name="ApplicationName">Swimtimer</string>
+    <string name="app_name">Swimtimer</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_share">Share</string>
+    <string name="action_save">Save</string>
+    <string name="action_back">Back</string>
+    <string name="action_about">About</string>
+    <string name="action_help">Help</string>
+    <string name="mode_switch_individual">Switched to individual timing</string>
+    <string name="mode_switch_increment">Switched to incremental timing</string>
+    <string name="action_mode_increment">Incremental timing</string>
+    <string name="action_mode_standard">Individual timing</string>
+    <string name="split_increment">Split</string>
+    <string name="increment_start">Start %d</string>
+    <string name="increment_split">Split %d</string>
+    <string name="increment_pause">Pause</string>
+    <!--<string name="section_format">Hello World from section: %1$d</string>-->
+    <string name="TimerLapText">Split</string>
+    <string name="StopAll">Stop all</string>
+    <string name="StartAll">Start all</string>
+    <string name="Stop">Stop</string>
+    <string name="ResetAll">Clear all</string>
+    <string name="Start">Start</string>
+    <string name="Lap">Split</string>
+    <string name="lap">Lap</string>
+    <string name="X">Clear</string>
+    <string name="clear">Clear</string>
+    <string name="EditLaneNames">Edit</string>
+    <string name="EditLaneNamesSave">Save</string>
+    <string name="ResetLaneNames">Reset</string>
+    <string name="Base">Base</string>
+    <string name="Lane">Lane</string>
+    <string name="addLane">Add lane</string>
+    <string name="switchActivity_multi">Multi timer</string>
+    <string name="switchActivity_one">One timer</string>
+    <string name="removeLane">Remove last lane</string>
+    <string name="Reset">Reset</string>
+    <string name="Total">Total</string>
+    <string name="Tot">Tot</string>
+    <string name="version">Version %1$s (%2$s)</string>
+    <string name="donate">Donate</string>
+    <string name="title_activity_about">About</string>
+    <string name="title_activity_oneclock">Swimtimer One</string>
+    <string name="iconname">Swimtimer</string>
+    <string name="copyright">Swimtimer &#169; Soduti AB - www.soduti.se</string>
+    <string name="link">www.soduti.se</string>
+    <string name="title_activity_help">Help</string>
+    <string name="help_addlane">&lt;h2>Add/Remove lane&lt;/h2>
+        &lt;p>Add lanes by clicking the plus sign.&lt;br/>
+        Remove the last lane by pressing the minus sign. Removing last lane is done without any warnings so remember to save your results before removing lanes.
+        &lt;/p>
+    </string>
+    <string name="help_share">&lt;h2>Share&lt;/h2>
+        Swimtimer app can share your results by mail or you can save your results to your internal drive for later access.
+        &lt;p>In the overflow menu you can share your results. When stop is clicked on any lane a result for all lanes is prepared for sharing.&lt;/p>
+    </string>
+    <string name="help_names">&lt;h2>Edit lane names&lt;/h2>
+        &lt;p>It\'s possible to enter names for the different lanes. If no names are entered then Lane 1, Lane 2, etc  will be used.&lt;/p>
+    </string>
+    <string name="about_donate">Donate by swish :)</string>
+    <string name="about_like">Like on facebook </string>
+    <string name="sw_longtoclear">Click long to clear</string>
+    <string name="facebook_app_id"></string>
+    <string name="one_split">SPLIT</string>
+    <string name="alert_dialog_ok">Close</string>
+    <string name="alert_dialog_cancel">Cancel</string>
+    <string name="close_title">Close and switch to multitimer?</string>
+    <string name="close_question">"Closing will stop timers and reset list."</string>
+    <string name="help_main_text_part_1">
+    &lt;h1>Swimtimer app&lt;/h1>
+    With Swimtimer app you can record split times for several athletes while keeping track of individual results! \'Swipe\' left or right to see split times or change lane labels.
+        </string>
+<string name="help_main_text_part_2">
+        &lt;br/>Start timing with \'Start all\' or \'Start\' and record each athletes split time by clicking \'Split\', on final lap use \'Stop\' to record the final split time.
+        &lt;br/>The \'Base\' stopwatch is always started if a start button is clicked to keep track of total time since first start.
+        Clicking \'Split\' will record a split time and show that last split time for 2.5 seconds before continuing with the new lap.
+
+        &lt;br/>\'Stop all\' will stop the timers for all lanes/athletes but will not record a final split time for individual lanes.
+        &lt;br/>\'Clear\' will reset all data for a lane and reset the timer.
+    &lt;br/>
+
+    </string>
+<string name="help_one">&lt;h2>One&lt;/h2>
+        Swimtimer\'s \'One\' screen is simulating a manual stopwatch with one button for start and split times and no lanes. Hold the split button for a bit longer to create a separator.
+</string>
+<string name="help_increment">&lt;h2>Incremental mode&lt;/h2>
+        Swimtimer has a special mode, \'Incremental timing\', to keep track of swimmers starting with a couple of seconds delay, ie when swimming in the same lane. Use the same button to start and record split times as each swimmer completes a lap. Switch mode through menu.
+</string>
+    <string name="help_one_screen">Swimtimer One shows a main timer that keeps track of total time, the latest split time are shown in the timer below the main timer. To the left all split times are listed.
+</string>
+<string name="help_one_long">By \'long\'-clicking on the Split button a divider is created and added to the split times list.</string>
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/headerView">
+<!--
+    <TextView
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:text="Lap"
+        android:textSize="20dp" >
+    </TextView>
+    <TextView
+        android:id="@+id/lane1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:text="Lane 1"
+        android:textSize="20dp" >
+    </TextView>
+    <TextView
+        android:id="@+id/lane2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:text="Lane 2"
+        android:textSize="20dp" >
+    </TextView>
+    <TextView
+        android:id="@+id/lane3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:text="Lane 3"
+        android:textSize="20dp" >
+    </TextView>
+    <TextView
+        android:id="@+id/lane4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:text="Lane 4"
+        android:textSize="20dp" >
+    </TextView>
+-->
+
+</LinearLayout>

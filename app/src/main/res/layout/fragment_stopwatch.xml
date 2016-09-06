@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightBackground"
+    android:paddingTop="5dp"
+    tools:context=".StopWatchFragment">
+
+    <LinearLayout
+        android:id="@+id/ll_SW_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/llSW"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- To make the "start/split" button span more than one row when in "Incremental" mode
+                llSW has to be orientation=horizontal and two new linearlayouts has to
+                be added as in info-fragment
+                all rows are handled in BuildRow method -->
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/linelayout1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:tag="0">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/StopWatchMain"-->
+                <!--style="@style/CustomTimerStyle"-->
+                <!--android:text="Base" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/StartStopBtnMain"-->
+                <!--style="@style/CustomButtonStyle"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:tag="0"-->
+                <!--android:text="@string/StartAll" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/ResetAllBtn"-->
+                <!--style="@style/CustomButtonStyle"-->
+                <!--android:layout_weight="1"-->
+                <!--android:tag="0"-->
+                <!--android:text="@string/ResetAll" />-->
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/linelayout2"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/StopWatch1"-->
+                <!--style="@style/CustomTimerStyle"-->
+                <!--android:tag="1"-->
+                <!--android:text="00:00.0" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/LapBtn1"-->
+                <!--style="@style/CustomButtonStyle"-->
+                <!--android:layout_weight="1"-->
+                <!--android:tag="1"-->
+                <!--android:text="@string/Start" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/Clear1"-->
+                <!--style="@style/CustomButtonStyle"-->
+                <!--android:layout_weight=".5"-->
+                <!--android:tag="1"-->
+                <!--android:text="X" />-->
+        <!--</LinearLayout>-->
+
+        </LinearLayout>
+        <!-- keep this infospace to be able to scroll the page up -->
+        <TextView
+        android:layout_width="10dp"
+        android:layout_height="50dp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="start_split_btn" type="id"/>
+    <item name="pause_btn" type="id"/>
+    <item name="save_btn" type="id"/>
+    <item name="clear_all_btn" type="id"/>
+</resources>

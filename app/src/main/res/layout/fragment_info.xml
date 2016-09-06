@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightBackground"
+    android:orientation="vertical"
+    android:paddingTop="5dp"
+    tools:context=".InfoFragment">
+    <!--android:windowSoftInputMode="adjustResize"-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+           <Button
+                android:id="@+id/btnResetLaneNames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/smoothbutton"
+                android:textColor="@android:color/holo_blue_dark"
+                android:text=""
+                android:layout_gravity="start" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/ll_names"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <!--<EditText-->
+                <!--android:id="@+id/info1"-->
+                <!--style="@style/CustomInfoStyle"-->
+                <!--android:enabled="false"-->
+                <!--android:hint="@string/Lane"-->
+                <!--android:tag="1" />-->
+
+            </LinearLayout>
+            <!-- keep this infospace to be able to scroll the text up -->
+            <TextView
+                android:id="@+id/infospace"
+                android:layout_width="10dp"
+                android:layout_height="50dp"
+                android:tag="99" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
