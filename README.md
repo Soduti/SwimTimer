@@ -20,4 +20,5 @@ Save results locally on your device
 Share results to mail or excel 
 
 Have fun with it
-Lars
+
+//Lars
