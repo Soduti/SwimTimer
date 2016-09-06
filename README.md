@@ -8,12 +8,15 @@ A timer application for swim coaches for timing one or more athletes keeping tra
 * Individual start and individual timing
 
 * One button timer no lanes
+
 * One button timer with lanes (the best :) )
 
 Add new lanes on the go!
+
 Edit labels for each lane
 
 Save results locally on your device
+
 Share results to mail or excel 
 
 Have fun with it
