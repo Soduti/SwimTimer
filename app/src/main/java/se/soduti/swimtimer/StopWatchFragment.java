@@ -317,7 +317,6 @@ public class StopWatchFragment extends Fragment implements IFragment {
         @Override
         public void onClick(View v) {
             Button b = (Button) v;
-            int laneNumber = (int) b.getTag();
 
             long currentTime = System.currentTimeMillis();
             if (!_swimState.isRunning) {
@@ -740,19 +739,21 @@ public class StopWatchFragment extends Fragment implements IFragment {
         writeSysOut("===== " + this.getClass().getSimpleName() + "." + new Object() {
         }.getClass().getEnclosingMethod().getName() + " ===== ");
 
-        String laneString;
-        String nameString;
+        String laneString = "";
+        String nameString = "";
         String counterString;
-        String buttonText1;
-        String buttonText2;
-        String buttonText3;
+        String buttonText1 = "";
+        String buttonText2 = "";
+        String buttonText3 = "";
         if (laneNumber == MAINLANE) {
-            laneString = "";
-            nameString = "";
-            counterString = getString(R.string.Base);
-            buttonText1 = getString(R.string.StartAll);
             buttonText2 = getString(R.string.ResetAll);
-            buttonText3 = getString(R.string.Stop);
+            if (_swimState.isRunning) {
+                counterString = "";
+                buttonText1 = getString(R.string.StopAll);
+            } else {
+                counterString = getString(R.string.Base);
+                buttonText1 = getString(R.string.StartAll);
+            }
         } else {
             //same code in refreshlanenames... so remember to duplicate any code changes
             laneString = Integer.toString(laneNumber);
@@ -767,9 +768,15 @@ public class StopWatchFragment extends Fragment implements IFragment {
                 nameString = String.format("Lane %s", Integer.toString(laneNumber));
 
             counterString = "00:00.0";
-            buttonText1 = getString(R.string.Start);
-            buttonText2 = getString(R.string.X);
-            buttonText3 = getString(R.string.Stop);
+            if (_swimState.Lanes.get(laneNumber).isRunning) {
+                buttonText1 = getString(R.string.split);
+                buttonText2 = getString(R.string.X);
+                buttonText3 = getString(R.string.Stop);
+            } else {
+                buttonText1 = getString(R.string.Start);
+                buttonText2 = getString(R.string.X);
+                buttonText3 = getString(R.string.Stop);
+            }
         }
         EditText et = createCustomEditText(laneString);
         ll_0.addView(et);
