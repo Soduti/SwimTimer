@@ -12,7 +12,7 @@
     <string name="mode_switch_increment">Switched to incremental timing</string>
     <string name="action_mode_increment">Incremental timing</string>
     <string name="action_mode_standard">Individual timing</string>
-    <string name="split_increment">Split</string>
+    <string name="split">Split</string>
     <string name="increment_start">Start %d</string>
     <string name="increment_split">Split %d</string>
     <string name="increment_pause">Pause</string>
@@ -59,7 +59,7 @@
     <string name="help_names">&lt;h2>Edit lane names&lt;/h2>
         &lt;p>It\'s possible to enter names for the different lanes. If no names are entered then Lane 1, Lane 2, etc  will be used.&lt;/p>
     </string>
-    <string name="about_donate">Donate by swish :)</string>
+    <string name="about_donate">Donate by swish 0708320200 :)</string>
     <string name="about_like">Like on facebook </string>
     <string name="sw_longtoclear">Click long to clear</string>
     <string name="facebook_app_id"></string>
@@ -68,6 +68,7 @@
     <string name="alert_dialog_cancel">Cancel</string>
     <string name="close_title">Close and switch to multitimer?</string>
     <string name="close_question">"Closing will stop timers and reset list."</string>
+    <string name="intent_no_laps">"No recorded laps found. Laps will be recorded when stop is pressed on any lane."</string>
     <string name="help_main_text_part_1">
     &lt;h1>Swimtimer app&lt;/h1>
     With Swimtimer app you can record split times for several athletes while keeping track of individual results! \'Swipe\' left or right to see split times or change lane labels.

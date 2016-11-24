@@ -1,4 +1,4 @@
-package se.soduti.swimtimer;
+package se.soduti.products.swimtimer;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
@@ -11,10 +11,6 @@ import android.view.Surface;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
 
 /**
  * Created by Larsi on 2016-02-22.
@@ -22,125 +18,38 @@ import java.util.TimeZone;
  */
 class CommonFunctions {
     private static final String LOG_TAG = "SwimTimerLog";
-    private static final int MAINLANE = 0;
-    private static final boolean verbose = false;
 
-    public static void writeSysOut(String output) {
-        if (verbose)
-            System.out.println(output);
-    }
-    public static void writeFile(String contents) throws IOException {
-
-        //Formatting a date needs a timezone - otherwise the date get formatted to your system time zone.
-        TimeZone timezone = TimeZone.getDefault();
-        DateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
-        formatter.setTimeZone(timezone);
-        Date now = new Date();
-        String fileName = String.format("Swimtimer_%s.csv", formatter.format(now));
+    public static void writeFile(String fileName, String contents) throws IOException {
 
         if (!isExternalStorageWritable()) {
             Log.v(LOG_TAG, "External media not available");
             return;
         }
-        File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
-        if (!path.isDirectory()) {
-            Log.e(LOG_TAG, "Directory does not exist");
-            return;
-        }
-        File file = new File(path.getPath(), fileName);
+        File file = getDocumentStorageDir(fileName);
         FileWriter fw = new FileWriter(file, false);
 
         fw.write(contents);
         fw.flush();
         fw.close();
-        writeSysOut(String.format("File:%s written to documents!", fileName));
-    }
-
-
-    public static String createTextResult(SwimState swimState) {
-        StringBuilder sb = new StringBuilder(); // Final string
-        StringBuilder sbWork; // Part of text
-
-        TimeZone timezone = TimeZone.getDefault();
-
-        //Formatting a date needs a timezone - otherwise the date get formatted to your system time zone.
-        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        formatter.setTimeZone(timezone);
-        Date now = new Date();
-        sb.append(String.format("Swimtimer %s\n\n", formatter.format(now)));
-
-        int highest_count = 0;
-        for (int laneIdx = 0; laneIdx < swimState.Lanes.size(); laneIdx++)
-            if (swimState.Lanes.get(laneIdx).Laps.size() > highest_count)
-                highest_count = swimState.Lanes.get(laneIdx).Laps.size();
-
-        sb.append("Lap,");
-        sbWork = new StringBuilder();
-        //Start from lane 1 (skip mainlane)
-        for (int laneIdx = MAINLANE + 1; laneIdx < swimState.Lanes.size(); laneIdx++) {
-            sbWork.append(String.format("%s, ", swimState.Lanes.get(laneIdx).LaneName));
-        }
-        sb.append(sbWork.toString().substring(0, sbWork.length() - 2));
-        sb.append("\n");
-
-        for (int lapIdx = 0; lapIdx < highest_count; lapIdx++) {
-            sbWork = new StringBuilder();
-            for (int laneIdx = MAINLANE; laneIdx < swimState.Lanes.size(); laneIdx++) {
-                if (laneIdx == MAINLANE)
-                    sbWork.append(String.format("%d, ", lapIdx+1));
-                else {
-                    if (lapIdx < swimState.Lanes.get(laneIdx).Laps.size()) {
-                        sbWork.append(String.format("%s, ", calculateLaptime(swimState.Lanes.get(laneIdx), lapIdx)));
-                    } else {
-                        sbWork.append(", ");
-                    }
-                }
-            }
-            sb.append(sbWork.toString().substring(0, sbWork.length()- 2));
-            sb.append("\n");
-        }
-        sb.append("Total, ");
-        sbWork = new StringBuilder();
-        for (int laneIdx = MAINLANE + 1; laneIdx < swimState.Lanes.size(); laneIdx++) {
-            sbWork.append(String.format("%s, ", DisplayTimerStringHundreds(getTotalTime(swimState.Lanes.get(laneIdx)))));
-        }
-
-        sb.append(sbWork.toString().substring(0, sbWork.length()- 2));
-        sb.append("\n");
-        return sb.toString();
-    }
-    public static long getTotalTime(Lane lane) {
-        long sum = 0;
-        if (lane.Laps.size() > 0) {
-            for (int lapIdx = 0; lapIdx < lane.Laps.size(); lapIdx++) {
-                sum += lane.Laps.get(lapIdx);
-            }
-            return sum;
-        }
-        else
-            return 0;
-    }
-    public static String calculateLaptime(Lane lane, int lapIdx) {
-        String newString;
-        if (lane.Laps.size() == 0)
-            return "No laps";
-        else {
-            //code for calculating last laptime
-            long lapTime;
-//            if (lane.Laps.size() == 1 || lapIdx == 0)
-//                lapTime = lane.Laps.get(lapIdx) - lane.StartTime;
-//            else
-                lapTime = lane.Laps.get(lapIdx); // - lane.Laps.get(lapIdx - 1);
-
-            newString = DisplayTimerStringHundreds(lapTime);
-        }
-        return newString;
+        System.out.println("write to file done!");
     }
 
     /* Checks if external storage is available for read and write */
     public static boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
-        return Environment.MEDIA_MOUNTED.equals(state);
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
+    }
+    public static File getDocumentStorageDir(String fileName) {
+        // Get the directory for the user's public document directory.
+        File file = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_DOCUMENTS), fileName);
+        if (!file.mkdirs()) {
+            Log.e(LOG_TAG, "Directory not created");
+        }
+        return file;
     }
 
     /**
@@ -154,9 +63,7 @@ class CommonFunctions {
         int mins = (int) ((millis - hours * 3600000) / 60000);
         int secs = (int) ((millis - hours * 3600000 - mins * 60000) / 1000);
         int remainingMillis = (int) (millis - hours * 3600000 - mins * 60000 - secs * 1000);
-        if (hours > 9) {
-            return String.format("%d:%02d", hours, mins);
-        } else if (hours > 0) {
+        if (hours > 0) {
             return String.format("%d:%02d:%02d", hours, mins, secs);
         } else {
             return String.format("%02d:%02d.%d", mins, secs, remainingMillis / 100);
@@ -175,7 +82,7 @@ class CommonFunctions {
         }
     }
 
-    public static String DisplayTimerStringHundredsCondensed(long millis) {
+    public static String DisplayTimerStringCondensed(long millis) {
         int hours = (int) (millis / 3600000);
         int mins = (int) ((millis - hours * 3600000) / 60000);
         int secs = (int) ((millis - hours * 3600000 - mins * 60000) / 1000);
@@ -183,9 +90,9 @@ class CommonFunctions {
         if (hours > 0)
             return String.format("%d:%02d:%02d", hours, mins, secs);
          else if (mins > 0)
-            return String.format("%02d:%02d.%02d", mins, secs, remainingMillis / 100);
+            return String.format("%d:%02d.%d", mins, secs, remainingMillis / 100);
         else
-            return String.format("%02d.%02d", secs, remainingMillis / 100); //only seconds to show
+            return String.format("%02d.%2d", secs, remainingMillis / 100); //only seconds to show
 
 
         /*if (mins > 9) {
